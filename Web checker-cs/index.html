@@ -1,0 +1,2063 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>HOLY_CHECKER — AntiCheat System для CS:GO/CS2</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="HOLY_CHECKER — профессиональная система проверки на читы для CS:GO и CS2. Защита серверов, анализ процессов, античит с продвинутой системой логирования.">
+    <meta name="keywords" content="чекер, античит, проверка на читы, CS:GO, CS2, HOLY_CHECKER, защита сервера">
+    <meta name="author" content="HOLY_CHECKER">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://checker-cs.ru/">
+    <meta property="og:title" content="HOLY_CHECKER — AntiCheat System">
+    <meta property="og:description" content="Профессиональная проверка игроков на читы с продвинутой системой анализа">
+    <meta property="og:image" content="https://checker-cs.ru/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="HOLY_CHECKER — AntiCheat System">
+    <meta property="twitter:description" content="Профессиональная проверка игроков на читы">
+    <meta property="twitter:image" content="https://checker-cs.ru/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="256x256" href="logo.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="logo.png">
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <meta name="theme-color" content="#141413">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           ANTHROPIC DESIGN SYSTEM — HOLY_CHECKER EDITION
+           ═══════════════════════════════════════════════════════════════ */
+
+        :root {
+            /* Anthropic Brand Colors */
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+
+            /* Semantic Colors */
+            --bg-primary: #0a0a09;
+            --bg-secondary: #141413;
+            --bg-tertiary: #1e1e1d;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-muted: #6b6a64;
+            --border-subtle: rgba(232, 230, 220, 0.08);
+            --border-medium: rgba(232, 230, 220, 0.15);
+
+            /* Accent Gradients */
+            --gradient-primary: linear-gradient(135deg, #d97757 0%, #c86641 100%);
+            --gradient-secondary: linear-gradient(135deg, #6a9bcc 0%, #5a8bb8 100%);
+            --gradient-success: linear-gradient(135deg, #788c5d 0%, #6b7b52 100%);
+            --gradient-glow: radial-gradient(ellipse at center, rgba(217, 119, 87, 0.15) 0%, transparent 70%);
+
+            /* Typography Scale */
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+            /* Spacing Scale */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(217, 119, 87, 0.2);
+
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════════════════════ */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* Disable text selection globally on mobile */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Disable tap highlight */
+            -webkit-tap-highlight-color: transparent;
+            /* Prevent touch callout on iOS */
+            -webkit-touch-callout: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            /* Prevent touch delays */
+            touch-action: manipulation;
+        }
+
+        body {
+            font-family: var(--font-display);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BACKGROUND EFFECTS
+           ═══════════════════════════════════════════════════════════════ */
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center center;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-glow);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.95); }
+            50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SCREENS
+           ═══════════════════════════════════════════════════════════════ */
+
+        .screen {
+            position: relative;
+            min-height: 100vh;
+            display: none;
+            opacity: 0;
+            transition: opacity var(--transition-slow);
+            z-index: 1;
+        }
+
+        .screen.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           WELCOME SCREEN
+           ═══════════════════════════════════════════════════════════════ */
+
+        #welcomeScreen {
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+        }
+
+        .welcome-container {
+            text-align: center;
+            max-width: 640px;
+        }
+
+        .logo-animation {
+            margin-bottom: var(--space-2xl);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .shield-icon {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 0 40px rgba(217, 119, 87, 0.3));
+            animation: shield-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes shield-glow {
+            0%, 100% { filter: drop-shadow(0 0 40px rgba(217, 119, 87, 0.3)); }
+            50% { filter: drop-shadow(0 0 60px rgba(217, 119, 87, 0.5)); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-md);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-3xl);
+            font-weight: 400;
+        }
+
+        .survey-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            backdrop-filter: blur(20px);
+        }
+
+        .survey-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .survey-question {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .role-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xl);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: var(--font-display);
+            color: var(--text-primary);
+        }
+
+        .role-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--anthropic-orange);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .role-btn .icon {
+            font-size: 2.5rem;
+        }
+
+        .role-btn .text {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .player-btn:hover {
+            background: linear-gradient(135deg, rgba(106, 155, 204, 0.1) 0%, rgba(106, 155, 204, 0.05) 100%);
+            border-color: var(--anthropic-blue);
+        }
+
+        .owner-btn:hover {
+            background: linear-gradient(135deg, rgba(217, 119, 87, 0.1) 0%, rgba(217, 119, 87, 0.05) 100%);
+            border-color: var(--anthropic-orange);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            display: none; /* Temporarily hidden */
+            gap: var(--space-xs);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-full);
+            padding: var(--space-xs);
+            z-index: 101;
+        }
+
+        .lang-btn {
+            padding: var(--space-xs) var(--space-sm);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .lang-btn.active {
+            background: var(--anthropic-orange);
+            color: var(--text-primary);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PLAYER SCREEN
+           ═══════════════════════════════════════════════════════════════ */
+
+        #playerScreen {
+            padding-top: 80px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(20, 20, 19, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-xl);
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .navbar-brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .navbar-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .navbar-nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--border-medium);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+
+        .back-btn:hover {
+            border-color: var(--anthropic-orange);
+            color: var(--text-primary);
+        }
+
+        .player-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-2xl);
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .hero-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-lg);
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-medium);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(217, 119, 87, 0.4);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-base);
+        }
+
+        .feature-card:hover {
+            border-color: var(--anthropic-orange);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(217, 119, 87, 0.2) 0%, rgba(217, 119, 87, 0.05) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* Slider */
+        .slider-container {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin: var(--space-3xl) 0;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform var(--transition-slow);
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: var(--space-xl);
+        }
+
+        .slide h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .slide p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .slider-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--anthropic-orange);
+            border-color: var(--anthropic-orange);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-full);
+            background: var(--border-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .dot.active {
+            background: var(--anthropic-orange);
+            width: 24px;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin: var(--space-3xl) 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Features List */
+        .features-list {
+            margin-top: var(--space-xl);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--text-secondary);
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: var(--anthropic-green);
+            font-weight: 700;
+        }
+
+        /* Code Copy Button */
+        .code-copy-wrapper {
+            margin: var(--space-lg) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .activation-code {
+            font-family: var(--font-mono);
+            background: var(--bg-tertiary);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-medium);
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-code {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-code:hover {
+            border-color: var(--anthropic-orange);
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: var(--space-2xl);
+            margin-top: var(--space-3xl);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navbar-nav {
+                display: none;
+            }
+        }
+
+        /* Mono text for technical elements */
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        /* Utility */
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mt-lg { margin-top: var(--space-lg); }
+        .mt-xl { margin-top: var(--space-xl); }
+        .mt-2xl { margin-top: var(--space-2xl); }
+    
+/* ═══════════════════════════════════════════════════════════════
+   OWNER SCREEN STYLES - Anthropic Design System
+   ═══════════════════════════════════════════════════════════════ */
+
+#ownerScreen {
+    padding-top: 80px;
+}
+
+.owner-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-2xl);
+}
+
+.owner-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.owner-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--anthropic-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.owner-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.owner-content {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+.owner-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+}
+
+/* Features Grid */
+.features-section {
+    margin-bottom: var(--space-2xl);
+}
+
+.features-grid-owner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+}
+
+.feature-card-owner {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+}
+
+.feature-card-owner:hover {
+    border-color: var(--anthropic-orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-icon-owner {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, rgba(217, 119, 87, 0.2) 0%, rgba(217, 119, 87, 0.05) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    font-size: 1.75rem;
+    color: var(--anthropic-orange);
+}
+
+.feature-card-owner h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+}
+
+.feature-card-owner p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+/* Sidebar */
+.owner-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.contact-section,
+.price-section,
+.example-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+}
+
+/* Contact Buttons */
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-medium);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all var(--transition-base);
+    margin-bottom: var(--space-sm);
+}
+
+.contact-btn:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.telegram-btn:hover {
+    background: linear-gradient(135deg, rgba(106, 155, 204, 0.2) 0%, rgba(106, 155, 204, 0.1) 100%);
+    border-color: var(--anthropic-blue);
+    transform: translateX(4px);
+}
+
+.discord-btn:hover {
+    background: linear-gradient(135deg, rgba(120, 140, 93, 0.2) 0%, rgba(120, 140, 93, 0.1) 100%);
+    border-color: var(--anthropic-green);
+    transform: translateX(4px);
+}
+
+/* Price Badge */
+.price-badge {
+    text-align: center;
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, rgba(217, 119, 87, 0.1) 0%, rgba(217, 119, 87, 0.05) 100%);
+    border-radius: var(--radius-lg);
+}
+
+.price-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+}
+
+.price-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-xs);
+}
+
+.price-note {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Example Section */
+.example-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+}
+
+.example-carousel {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-tertiary);
+    aspect-ratio: 16 / 9;
+}
+
+.example-screenshot {
+    display: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform var(--transition-base);
+}
+
+.example-screenshot.active {
+    display: block;
+}
+
+.example-screenshot:hover {
+    transform: scale(1.02);
+}
+
+.example-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20, 20, 19, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background: var(--anthropic-orange);
+    border-color: var(--anthropic-orange);
+}
+
+.carousel-prev {
+    left: var(--space-sm);
+}
+
+.carousel-next {
+    right: var(--space-sm);
+}
+
+/* Image Modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 9, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+}
+
+.image-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    background: var(--bg-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-medium);
+    transition: all var(--transition-fast);
+}
+
+.image-modal-close:hover {
+    background: var(--anthropic-orange);
+    border-color: var(--anthropic-orange);
+    transform: rotate(90deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .owner-content {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .features-grid-owner {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid-owner {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-header {
+        margin-bottom: var(--space-2xl);
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="glow-orb" id="glow"></div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="langRu" onclick="switchLanguage('ru')">RU</button>
+        <button class="lang-btn" id="langEn" onclick="switchLanguage('en')">EN</button>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="welcome-container">
+            <div class="logo-animation">
+                <img src="logo.png" class="shield-icon" alt="HOLY_CHECKER">
+            </div>
+            <h1 class="glitch" data-text="HOLY_CHECKER">HOLY_CHECKER</h1>
+            <p class="subtitle">Надежная защита от читеров</p>
+
+            <div class="survey-box">
+                <h2>Добро пожаловать!</h2>
+                <p class="survey-question">Вы являетесь:</p>
+                <div class="button-group">
+                    <button class="role-btn player-btn" onclick="selectRole('player')">
+                        <span class="icon">🎮</span>
+                        <span class="text">Игрок</span>
+                    </button>
+                    <button class="role-btn owner-btn" onclick="selectRole('owner')">
+                        <span class="icon">👑</span>
+                        <span class="text">Владелец сервера</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Screen -->
+    <div id="playerScreen" class="screen">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="logo.png" alt="HOLY_CHECKER">
+                <span>HOLY_CHECKER</span>
+            </div>
+            <div class="navbar-nav">
+                <a href="#features">Возможности</a>
+                <a href="#download">Скачать</a>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Назад</button>
+        </nav>
+
+        <div class="player-container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2>Профессиональная защита от читеров</h2>
+                    <p>
+                        HOLY_CHECKER обеспечивает надёжную проверку игроков с помощью 
+                        продвинутой системы анализа процессов, драйверов и памяти.
+                    </p>
+                    <button class="download-btn" onclick="downloadChecker()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span class="btn-text">Скачать HOLY_CHECKER</span>
+                    </button>
+                    <p class="mono btn-subtext" style="font-size: 0.875rem; margin-top: 1rem; color: var(--text-muted);">
+                        Версия 2.0.1 | Windows | 42.3 MB
+                    </p>
+
+                    <!-- Activation Code -->
+                    <div class="code-copy-wrapper">
+                        <span class="activation-code">6nLbBRxk</span>
+                        <button class="btn-code" onclick="copyActivationCode(event)">📋 Скопировать код</button>
+                    </div>
+
+                    <!-- Features List -->
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span>Легкий вес (42.3 MB)</span>
+                        </div>
+                        <div class="feature-item">
+                            <span>Автоматические обновления</span>
+                        </div>
+                        <div class="feature-item">
+                            <span>Поддержка 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="player.png" alt="Интерфейс HOLY_CHECKER">
+                </div>
+            </section>
+
+            <!-- Stats -->
+
+            <!-- Features -->
+            <section class="features-grid" id="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Анализ файлов</h3>
+                    <p>
+                        Глубокая проверка всех файлов на компьютере.
+						В том числе и подключенные накопители.
+						Два варианта анализа файлов.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Стандарт программ</h3>
+                    <p>
+                        Стандартные программы для проверок в наше время, используемых для 
+                        проверок на запрещенное ПО.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Мониторинг системы</h3>
+                    <p>
+                        Анализ и вывод данных о системе 
+                        в реальном времени.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Детальные отчёты</h3>
+                    <p>
+                        Полные логи после анализа файлов на пк 
+						с возможностью экспорта на вашем компьютере.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Slider -->
+            <section class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide" data-slide="1">
+                        <h3 class="slide-title">Что такое HOLY_CHECKER?</h3>
+                        <p class="slide-text">
+                            HOLY_CHECKER - это второстепенная программа для проверки игроков на читы, 
+                            которая обеспечивает честную игру для всех участников. Наша технология 
+                            использует машинное обучение и определенные скрипты анализируя каждую 
+                            проверку для выявления нечестных игроков.
+                        </p>
+                    </div>
+                    <div class="slide" data-slide="2">
+                        <h3 class="slide-title">Как это работает?</h3>
+                        <p class="slide-text">
+                            При проверке исп стандартные методы проверки,а так же удобство и поиск читов. 
+                            Она анализирует пк в реальном времени и выявляет подозрительные паттерны 
+                            у программ, характерные для использования читов.
+                        </p>
+                    </div>
+                    <div class="slide" data-slide="3">
+                        <h3 class="slide-title">Безопасность данных</h3>
+                        <p class="slide-text">
+                            Мы серьезно относимся к вашей конфиденциальности. HOLY_CHECKER собирает 
+                            только необходимые данные и не имеет доступа к вашим личным файлам 
+                            или информации.
+                        </p>
+                    </div>
+                    <div class="slide" data-slide="4">
+                        <h3 class="slide-title">Простая установка</h3>
+                        <p class="slide-text">
+                            Установка занимает всего несколько минут. Скачайте установщик, запустите 
+                            его и следуйте инструкциям. После установки система проверяющий скажет, 
+                            что нужно делать.
+                        </p>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="previousSlide()">◀</button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn" onclick="nextSlide()">▶</button>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-links">
+                    <a href="#">Документация</a>
+                    <a href="https://t.me/UMEP_B_CSGO" target="_blank">Поддержка</a>
+                    <a href="#">Конфиденциальность</a>
+                    <a href="#">Условия использования</a>
+                </div>
+                <p>© 2025 HOLY_CHECKER. Все права защищены.</p>
+                <p class="mono" style="margin-top: 0.5rem; font-size: 0.75rem;">
+                    AntiCheat System v1.2.6
+                </p>
+            </footer>
+        </div>
+    </div>
+
+        <!-- Owner Screen -->
+    <div id="ownerScreen" class="screen">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="logo.png" alt="HOLY_CHECKER">
+                <span>HOLY_CHECKER</span>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Назад</button>
+        </nav>
+
+        <div class="owner-container">
+            <!-- Header -->
+            <div class="owner-header">
+                <h1 class="owner-title">Holy - Полноценная версия</h1>
+                <p class="owner-subtitle">Мощное комплексное решение для максимального и удобного использования</p>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="owner-content">
+                <!-- Main Content -->
+                <div class="owner-main">
+                    <!-- Features Section -->
+                    <div class="features-section">
+                        <div class="features-grid-owner">
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">🎨</div>
+                                <h3>Полная кастомизация</h3>
+                                <p>Изменение названия чекера под ваш проект и интеграция ваших ссылок и контактов</p>
+                            </div>
+                            
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">👀</div>
+                                <h3>Продвинутая система логирования</h3>
+                                <p>Уведомления о проверках и ее результатов напрямую в ваш Discord-канал (на выбор)</p>
+                            </div>
+                            
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">
+                                    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="2" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="15" y="2" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="28" y="2" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="2" y="15" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="15" y="15" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="28" y="15" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="2" y="28" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="15" y="28" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                        <rect x="28" y="28" width="10" height="10" fill="currentColor" opacity="0.8"/>
+                                    </svg>
+                                </div>
+                                <h3>Интеграции Regedit</h3>
+                                <p>Работа с реестром Windows без сторонних программ</p>
+                            </div>
+                            
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">💾</div>
+                                <h3>Анализ памяти и RWX процессов</h3>
+                                <p>Анализ использованной памяти и RWX процесса игры CS:GO/CS2</p>
+                            </div>
+                            
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">🔍</div>
+                                <h3>Анализ драйверов</h3>
+                                <p>Проверка драйверов на легитимность и поддержку от Microsoft</p>
+                            </div>
+                            
+                            <div class="feature-card-owner">
+                                <div class="feature-icon-owner">⚡</div>
+                                <h3>Удобство и скорость</h3>
+                                <p>Время проверки уменьшается в разы благодаря оптимизации</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="owner-sidebar">
+                    <!-- Contact Section -->
+                    <div class="contact-section">
+                        <h2 class="section-title">Связаться с нами</h2>
+                        
+                        <a href="https://t.me/UMEP_B_CSGO" target="_blank" class="contact-btn telegram-btn">
+                            <svg class="contact-icon" viewBox="0 0 48 48" fill="currentColor">
+                                <path d="M41.4193 7.30899C41.4193 7.30899 45.3046 5.79399 44.9808 9.47328C44.8729 10.9883 43.9016 16.2908 43.1461 22.0262L40.5559 39.0159C40.5559 39.0159 40.3401 41.5048 38.3974 41.9377C36.4547 42.3705 33.5408 40.4227 33.0011 39.9898C32.5694 39.6652 24.9068 34.7955 22.2086 32.4148C21.4531 31.7655 20.5897 30.4669 22.3165 28.9519L33.6487 18.1305C34.9438 16.8319 36.2389 13.8019 30.8426 17.4812L15.7331 27.7616C15.7331 27.7616 14.0063 28.8437 10.7686 27.8698L3.75342 25.7055C3.75342 25.7055 1.16321 24.0823 5.58815 22.459C16.3807 17.3729 29.6555 12.1786 41.4193 7.30899Z"/>
+                            </svg>
+                            <span>Telegram</span>
+                        </a>
+                        
+                        <a href="https://discord.gg/Aa9xtmdwnD" target="_blank" class="contact-btn discord-btn">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.59 5.88997C17.36 5.31997 16.05 4.89997 14.67 4.65997C14.5 4.95997 14.3 5.36997 14.17 5.69997C12.71 5.47997 11.26 5.47997 9.83001 5.69997C9.69001 5.36997 9.49001 4.95997 9.32001 4.65997C7.94001 4.89997 6.63001 5.31997 5.40001 5.88997C2.92001 9.62997 2.25001 13.28 2.58001 16.87C4.23001 18.1 5.82001 18.84 7.39001 19.33C7.78001 18.8 8.12001 18.23 8.42001 17.64C7.85001 17.43 7.31001 17.16 6.80001 16.85C6.94001 16.75 7.07001 16.64 7.20001 16.54C10.33 18 13.72 18 16.81 16.54C16.94 16.65 17.07 16.75 17.21 16.85C16.7 17.16 16.15 17.42 15.59 17.64C15.89 18.23 16.23 18.8 16.62 19.33C18.19 18.84 19.79 18.1 21.43 16.87C21.82 12.7 20.76 9.08997 18.61 5.88997H18.59ZM8.84001 14.67C7.90001 14.67 7.13001 13.8 7.13001 12.73C7.13001 11.66 7.88001 10.79 8.84001 10.79C9.80001 10.79 10.56 11.66 10.55 12.73C10.55 13.79 9.80001 14.67 8.84001 14.67ZM15.15 14.67C14.21 14.67 13.44 13.8 13.44 12.73C13.44 11.66 14.19 10.79 15.15 10.79C16.11 10.79 16.87 11.66 16.86 12.73C16.86 13.79 16.11 14.67 15.15 14.67Z"/>
+                            </svg>
+                            <span>Discord сервер</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Price Section -->
+                    <div class="price-section">
+                        <div class="price-badge">
+                            <span class="price-label">Цена:</span>
+                            <span class="price-value">Договорная</span>
+                            <span class="price-note">(обсуждается индивидуально)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Example Section -->
+                    <div class="example-section">
+                        <h3 class="example-title">Пример работы</h3>
+                        <div class="example-content">
+                            <div class="example-carousel" id="exampleCarousel">
+                                <div class="example-screenshot active" onclick="openImageModal('s1.jpg')">
+                                    <img src="s1.jpg" alt="Пример работы 1" class="example-img">
+                                </div>
+                                <div class="example-screenshot" onclick="openImageModal('s2.png')">
+                                    <img src="s2.png" alt="Пример работы 2" class="example-img">
+                                </div>
+                                <button class="carousel-arrow carousel-prev" onclick="changeExample(-1)">‹</button>
+                                <button class="carousel-arrow carousel-next" onclick="changeExample(1)">›</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" src="" alt="Пример работы" class="modal-img">
+        </div>
+    </div>
+
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // STATE MANAGEMENT
+        // ═══════════════════════════════════════════════════════════════
+
+        let currentLang = 'ru';
+        let currentSlide = 1;
+        const totalSlides = 4;
+        let slideInterval = null;
+        const slideIntervalTime = 3000;
+
+        // Переводы
+        const translations = {
+            ru: {
+                welcome: {
+                    title: 'HOLY_CHECKER',
+                    subtitle: 'Надежная защита от читеров',
+                    greeting: 'Добро пожаловать!',
+                    question: 'Вы являетесь:',
+                    player: 'Игрок',
+                    owner: 'Владелец сервера'
+                },
+                player: {
+                    back: '← Назад',
+                    slides: [
+                        {
+                            title: 'Что такое HOLY_CHECKER?',
+                            text: 'HOLY_CHECKER - это второстепенная программа для проверки игроков на читы, которая обеспечивает честную игру для всех участников. Наша технология использует машинное обучение и определенные скрипты анализируя каждую проверку для выявления нечестных игроков.'
+                        },
+                        {
+                            title: 'Как это работает?',
+                            text: 'При проверке исп стандартные методы проверки,а так же удобство и поиск читов. Она анализирует пк в реальном времени и выявляет подозрительные паттерны у программ, характерные для использования читов.'
+                        },
+                        {
+                            title: 'Безопасность данных',
+                            text: 'Мы серьезно относимся к вашей конфиденциальности. HOLY_CHECKER собирает только необходимые данные и не имеет доступа к вашим личным файлам или информации.'
+                        },
+                        {
+                            title: 'Простая установка',
+                            text: 'Установка занимает всего несколько минут. Скачайте установщик, запустите его и следуйте инструкциям. После установки система проверяющий скажет,что нужно делать.'
+                        }
+                    ],
+                    download: 'Скачать HOLY_CHECKER',
+                    version: 'Версия 1.2.6 | Windows',
+                    features: [
+                        'Легкий вес (42.3 MB)',
+                        'Автоматические обновления',
+                        'Поддержка 24/7'
+                    ],
+                    featureCards: [
+                        {
+                            title: 'Анализ процессов',
+                            text: 'Глубокая проверка всех запущенных процессов на предмет несанкционированного вмешательства в игру.'
+                        },
+                        {
+                            title: 'Защита драйверов',
+                            text: 'Обнаружение нелегитимных драйверов, используемых для обхода античит-систем.'
+                        },
+                        {
+                            title: 'Мониторинг памяти',
+                            text: 'Анализ использования памяти и обнаружение RWX-процессов в реальном времени.'
+                        },
+                        {
+                            title: 'Детальные отчёты',
+                            text: 'Полные логи проверок с возможностью экспорта и интеграции с вашим сервером.'
+                        }
+                    ]
+                }
+            },
+            en: {
+                welcome: {
+                    title: 'HOLY_CHECKER',
+                    subtitle: 'Reliable protection against cheaters',
+                    greeting: 'Welcome!',
+                    question: 'You are:',
+                    player: 'Player',
+                    owner: 'Server Owner'
+                },
+                player: {
+                    back: '← Back',
+                    slides: [
+                        {
+                            title: 'What is HOLY_CHECKER?',
+                            text: 'HOLY_CHECKER is a secondary program for checking players for cheats that ensures fair play for all participants. Our technology uses machine learning and specific scripts analyzing each check to detect dishonest players.'
+                        },
+                        {
+                            title: 'How does it work?',
+                            text: 'During verification, standard checking methods are used, as well as convenience and cheat detection. It analyzes the PC in real-time and detects suspicious patterns in programs characteristic of cheat usage.'
+                        },
+                        {
+                            title: 'Data Security',
+                            text: 'We take your privacy seriously. HOLY_CHECKER collects only necessary data and does not have access to your personal files or information.'
+                        },
+                        {
+                            title: 'Easy Installation',
+                            text: 'Installation takes just a few minutes. Download the installer, run it, and follow the instructions. After installation, the checker will tell you what to do.'
+                        }
+                    ],
+                    download: 'Download HOLY_CHECKER',
+                    version: 'Version 1.2.6 | Windows',
+                    features: [
+                        'Lightweight (42.3 MB)',
+                        'Automatic updates',
+                        '24/7 Support'
+                    ],
+                    featureCards: [
+                        {
+                            title: 'Process Analysis',
+                            text: 'Deep inspection of all running processes for unauthorized game interference.'
+                        },
+                        {
+                            title: 'Driver Protection',
+                            text: 'Detection of illegitimate drivers used to bypass anti-cheat systems.'
+                        },
+                        {
+                            title: 'Memory Monitoring',
+                            text: 'Real-time memory usage analysis and RWX process detection.'
+                        },
+                        {
+                            title: 'Detailed Reports',
+                            text: 'Complete check logs with export capability and server integration.'
+                        }
+                    ]
+                }
+            }
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // LANGUAGE SWITCHER
+        // ═══════════════════════════════════════════════════════════════
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('lang' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
+
+            updateWelcomeScreen();
+            updatePlayerScreen();
+        }
+
+        function updateWelcomeScreen() {
+            const t = translations[currentLang].welcome;
+            document.querySelector('.glitch').textContent = t.title;
+            document.querySelector('.subtitle').textContent = t.subtitle;
+            document.querySelector('.survey-box h2').textContent = t.greeting;
+            document.querySelector('.survey-question').textContent = t.question;
+            document.querySelector('.player-btn .text').textContent = t.player;
+            document.querySelector('.owner-btn .text').textContent = t.owner;
+        }
+
+        function updatePlayerScreen() {
+            const t = translations[currentLang].player;
+
+            const backBtn = document.querySelector('#playerScreen .back-btn');
+            if (backBtn) backBtn.textContent = t.back;
+
+            const slides = document.querySelectorAll('#playerScreen .slide');
+            slides.forEach((slide, index) => {
+                const title = slide.querySelector('.slide-title');
+                const text = slide.querySelector('.slide-text');
+                if (title && text && t.slides[index]) {
+                    title.textContent = t.slides[index].title;
+                    text.textContent = t.slides[index].text;
+                }
+            });
+
+            const downloadBtn = document.querySelectorAll('#playerScreen .download-btn');
+            downloadBtn.forEach(btn => {
+                const btnText = btn.querySelector('.btn-text');
+                const btnSubtext = btn.querySelector('.btn-subtext');
+                if (btnText) btnText.textContent = t.download;
+                if (btnSubtext) btnSubtext.textContent = t.version;
+            });
+
+            const featureItems = document.querySelectorAll('#playerScreen .feature-item span:last-child');
+            featureItems.forEach((item, index) => {
+                if (t.features[index]) {
+                    item.textContent = t.features[index];
+                }
+            });
+
+            // Update feature cards (only in player screen)
+            const featureCards = document.querySelectorAll('#playerScreen .feature-card');
+            console.log('Found feature cards:', featureCards.length);
+            console.log('Feature cards data:', t.featureCards);
+            featureCards.forEach((card, index) => {
+                if (t.featureCards && t.featureCards[index]) {
+                    const title = card.querySelector('h3');
+                    const text = card.querySelector('p');
+                    console.log(`Card ${index}:`, title?.textContent, '->', t.featureCards[index].title);
+                    if (title) title.textContent = t.featureCards[index].title;
+                    if (text) text.textContent = t.featureCards[index].text;
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // ROLE SELECTION
+        // ═══════════════════════════════════════════════════════════════
+
+        function selectRole(role) {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const playerScreen = document.getElementById('playerScreen');
+            const ownerScreen = document.getElementById('ownerScreen');
+
+            welcomeScreen.style.opacity = '0';
+
+            setTimeout(() => {
+                welcomeScreen.classList.remove('active');
+
+                if (role === 'player') {
+                    playerScreen.classList.add('active');
+                    setTimeout(() => {
+                        playerScreen.style.opacity = '1';
+                        updatePlayerScreen(); // Update translations when opening player screen
+                        startSlideInterval();
+                    }, 500);
+                } else if (role === 'owner') {
+                    ownerScreen.classList.add('active');
+                    setTimeout(() => {
+                        ownerScreen.style.opacity = '1';
+                    }, 500);
+                }
+            }, 500);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // GO BACK
+        // ═══════════════════════════════════════════════════════════════
+
+        function goBack() {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const playerScreen = document.getElementById('playerScreen');
+            const ownerScreen = document.getElementById('ownerScreen');
+
+            stopSlideInterval();
+
+            if (playerScreen.classList.contains('active')) {
+                playerScreen.style.opacity = '0';
+                setTimeout(() => {
+                    playerScreen.classList.remove('active');
+                    welcomeScreen.classList.add('active');
+                    welcomeScreen.style.opacity = '1';
+                }, 500);
+            } else if (ownerScreen.classList.contains('active')) {
+                ownerScreen.style.opacity = '0';
+                setTimeout(() => {
+                    ownerScreen.classList.remove('active');
+                    welcomeScreen.classList.add('active');
+                    welcomeScreen.style.opacity = '1';
+                }, 500);
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // SLIDER CONTROLS
+        // ═══════════════════════════════════════════════════════════════
+
+        function showSlide(slideNumber) {
+            const sliderTrack = document.querySelector('#playerScreen .slider-track');
+            const indicators = document.querySelectorAll('#playerScreen .dot');
+
+            // Transform the slider track to show the correct slide
+            const offset = -(slideNumber - 1) * 100;
+            if (sliderTrack) {
+                sliderTrack.style.transform = `translateX(${offset}%)`;
+            }
+
+            // Update dot indicators
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            const targetIndicator = document.querySelector(`#playerScreen .dot[data-slide="${slideNumber}"]`);
+            if (targetIndicator) targetIndicator.classList.add('active');
+
+            currentSlide = slideNumber;
+            resetSlideInterval();
+        }
+
+        function startSlideInterval() {
+            stopSlideInterval();
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, slideIntervalTime);
+        }
+
+        function stopSlideInterval() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        }
+
+        function resetSlideInterval() {
+            stopSlideInterval();
+            if (document.getElementById('playerScreen').classList.contains('active')) {
+                startSlideInterval();
+            }
+        }
+
+        function nextSlide() {
+            let next = currentSlide + 1;
+            if (next > totalSlides) next = 1;
+            showSlide(next);
+        }
+
+        function previousSlide() {
+            let prev = currentSlide - 1;
+            if (prev < 1) prev = totalSlides;
+            showSlide(prev);
+        }
+
+        // Initialize slider dots
+        function initSlider() {
+            const dotsContainer = document.getElementById('sliderDots');
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 1 ? ' active' : '');
+                dot.setAttribute('data-slide', i);
+                dot.addEventListener('click', () => showSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            // Initialize the first slide position
+            showSlide(1);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DOWNLOAD FUNCTION
+        // ═══════════════════════════════════════════════════════════════
+
+        function downloadChecker() {
+            const link = document.createElement('a');
+            link.href = 'Holy-Nub.exe?v=' + Date.now();
+            link.download = 'Holy-Nub.exe';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // COPY ACTIVATION CODE
+        // ═══════════════════════════════════════════════════════════════
+
+        function copyActivationCode(event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+
+            const code = '6nLbBRxk';
+            const codeElement = event ? event.currentTarget : document.querySelector('.btn-code');
+            const originalText = codeElement.innerHTML;
+
+            function showFeedback() {
+                codeElement.innerHTML = '✓ Код скопирован!';
+                codeElement.style.color = '#10b981';
+                codeElement.style.transform = 'scale(1.1)';
+
+                setTimeout(() => {
+                    codeElement.innerHTML = originalText;
+                    codeElement.style.color = '';
+                    codeElement.style.transform = '';
+                }, 2000);
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showFeedback();
+                }).catch(err => {
+                    console.error('Ошибка Clipboard API:', err);
+                    copyWithFallback(code, showFeedback);
+                });
+            } else {
+                copyWithFallback(code, showFeedback);
+            }
+        }
+
+        function copyWithFallback(text, callback) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = '0';
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+            textArea.style.opacity = '0';
+            textArea.style.zIndex = '-9999';
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful && callback) {
+                    callback();
+                }
+            } catch (err) {
+                console.error('Ошибка копирования:', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // KEYBOARD NAVIGATION
+        // ═══════════════════════════════════════════════════════════════
+
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('playerScreen').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    previousSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            }
+            if (e.key === 'Escape') {
+                goBack();
+            }
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // GLOW ORB FOLLOW MOUSE (Desktop only)
+        // ═══════════════════════════════════════════════════════════════
+
+        const glow = document.getElementById('glow');
+        if (glow && window.matchMedia("(min-width: 769px)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // OWNER SCREEN FUNCTIONS
+        // ═══════════════════════════════════════════════════════════════
+
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImage').src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        let currentExample = 0;
+        const totalExamples = 2;
+
+        function changeExample(direction) {
+            const screenshots = document.querySelectorAll('.example-screenshot');
+            screenshots[currentExample].classList.remove('active');
+            screenshots[currentExample].style.display = 'none';
+            currentExample += direction;
+            if (currentExample < 0) currentExample = totalExamples - 1;
+            else if (currentExample >= totalExamples) currentExample = 0;
+            screenshots[currentExample].classList.add('active');
+            screenshots[currentExample].style.display = 'block';
+        }
+
+        function selectRole(role) {
+            document.getElementById('welcomeScreen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcomeScreen').classList.remove('active');
+                document.getElementById('playerScreen').classList.remove('active');
+                document.getElementById('ownerScreen').classList.remove('active');
+                if (role === 'player') {
+                    document.getElementById('playerScreen').classList.add('active');
+                    setTimeout(() => {
+                        document.getElementById('playerScreen').style.opacity = '1';
+                        startSlideInterval();
+                    }, 50);
+                } else if (role === 'owner') {
+                    document.getElementById('ownerScreen').classList.add('active');
+                    setTimeout(() => {
+                        document.getElementById('ownerScreen').style.opacity = '1';
+                    }, 50);
+                }
+            }, 500);
+        }
+
+        function goBack() {
+            stopSlideInterval();
+            document.getElementById('playerScreen').style.opacity = '0';
+            document.getElementById('ownerScreen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('playerScreen').classList.remove('active');
+                document.getElementById('ownerScreen').classList.remove('active');
+                document.getElementById('welcomeScreen').classList.add('active');
+                setTimeout(() => {
+                    document.getElementById('welcomeScreen').style.opacity = '1';
+                }, 50);
+            }, 500);
+        }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+        OWNER SCREEN
+        ═══════════════════════════════════════════════════════════════ -->
+    <div id="ownerScreen" class="screen">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="logo.png" alt="HOLY_CHECKER" style="width: 32px; height: 32px;">
+                <span>HOLY_CHECKER</span>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Назад</button>
+        </nav>
+
+        <div class="player-container">
+            <div class="owner-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Holy - Полноценная версия</h2>
+                <p style="color: var(--text-secondary); font-size: 1.25rem; max-width: 800px; margin: 0 auto;">Мощное комплексное решение для максимального и удобного использования</p>
+            </div>
+
+            <div class="features-grid" style="margin-top: 2rem;">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Полная кастомизация</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Изменение названия чекера под ваш проект и интеграция ваших ссылок и контактов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👀</div>
+                    <h3>Продвинутая система логирования</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Уведомления о проверках и ее результатов напрямую в ваш Discord-канал (на выбор)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="color: var(--anthropic-orange);">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="4" width="10" height="10" opacity="0.8"/>
+                            <rect x="17" y="4" width="10" height="10" opacity="0.8"/>
+                            <rect x="30" y="4" width="10" height="10" opacity="0.8"/>
+                            <rect x="4" y="17" width="10" height="10" opacity="0.8"/>
+                            <rect x="17" y="17" width="10" height="10" opacity="0.8"/>
+                            <rect x="30" y="17" width="10" height="10" opacity="0.8"/>
+                            <rect x="4" y="30" width="10" height="10" opacity="0.8"/>
+                            <rect x="17" y="30" width="10" height="10" opacity="0.8"/>
+                            <rect x="30" y="30" width="10" height="10" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <h3>Интеграции Regedit</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Работа с реестром Windows без сторонних программ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Анализ памяти и RWX процессов</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Анализ использованной памяти и RWX процесса игры CS:GO/CS2</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Анализ драйверов</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Проверка драйверов на легитимность и поддержку от Microsoft</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Удобство и скорость</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Время проверки уменьшается в разы благодаря оптимизации</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 380px; gap: 2rem; margin-top: 3rem;">
+                <div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Пример работы</h3>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 1.5rem; position: relative;">
+                        <div class="example-carousel" id="exampleCarousel">
+                            <div class="example-screenshot active" onclick="openImageModal('s1.jpg')">
+                                <img src="s1.jpg" alt="Пример 1" style="width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <div class="example-screenshot" onclick="openImageModal('s2.png')" style="display: none;">
+                                <img src="s2.png" alt="Пример 2" style="width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <button class="carousel-arrow carousel-prev" onclick="changeExample(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: var(--text-primary); font-size: 2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">‹</button>
+                            <button class="carousel-arrow carousel-next" onclick="changeExample(1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: var(--text-primary); font-size: 2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">›</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 1.5rem;">
+                        <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.25rem;">Связаться с нами</h3>
+                        <a href="https://t.me/UMEP_B_CSGO" target="_blank" class="download-btn" style="background: linear-gradient(135deg, rgba(0,119,255,0.2), rgba(0,119,255,0.1)); border: 1px solid rgba(0,119,255,0.3); margin-bottom: 0.75rem; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 48 48" fill="currentColor" style="margin-right: 0.75rem;">
+                                <path d="M41.42 7.31L44.98 9.47c.32 3.68-.56 8.98-1.31 14.72l-2.59 16.99s-.21 2.49-2.16 2.92c-1.94.43-4.85-1.51-5.39-1.95-.54-.32-8.2-5.2-10.9-7.58-.75-.65-1.62-1.95.09-3.46l11.33-10.87c1.3-1.3 2.59-4.33-2.81-.65l-15.1 10.28s-1.73 1.08-4.97.11l-7.02-2.16s-2.59-1.62 1.84-3.24c10.8-4.87 24.08-9.67 35.83-14.54z"/>
+                            </svg>
+                            Telegram
+                        </a>
+                        <a href="https://discord.gg/Aa9xtmdwnD" target="_blank" class="download-btn" style="background: linear-gradient(135deg, rgba(88,101,242,0.2), rgba(88,101,242,0.1)); border: 1px solid rgba(88,101,242,0.3); margin-bottom: 0; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.75rem;">
+                                <path d="M18.59 5.89c-1.23-.57-2.54-1-3.92-1.24-.17.3-.37.71-.5.97-1.46-.22-2.91-.22-4.34 0-.13-.3-.33-.71-.5-.97-1.38.24-2.69.67-3.92 1.24C2.92 9.63 2.25 13.29 2.58 16.88c1.65 1.23 3.24 1.97 4.81 2.46.39-.53.73-1.1 1.03-1.69-.57-.21-1.11-.48-1.62-.79.13-.1.26-.21.39-.32 3.13 1.46 6.52 1.46 9.61 0 .13.11.26.22.39.32-.51.31-1.05.58-1.62.79.3.59.64 1.16 1.03 1.69 1.57-.49 3.16-1.23 4.81-2.46.38-4.18-.68-7.79-2.83-10.99h.01zM8.84 14.67c-.94 0-1.71-.87-1.71-1.94 0-1.07.75-1.94 1.71-1.94.96 0 1.72.87 1.71 1.94 0 1.07-.76 1.94-1.71 1.94zm6.31 0c-.94 0-1.71-.87-1.71-1.94 0-1.07.75-1.94 1.71-1.94.96 0 1.72.87 1.71 1.94 0 1.07-.76 1.94-1.71 1.94z"/>
+                            </svg>
+                            Discord сервер
+                        </a>
+                    </div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 1.5rem; text-align: center;">
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 1rem;">Цена:</p>
+                        <p style="font-size: 2.5rem; font-weight: 900; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0.5rem 0;">Договорная</p>
+                        <p style="color: var(--text-muted); font-size: 0.875rem;">(обсуждается индивидуально)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" onclick="closeImageModal()" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+        <div style="position: relative; max-width: 90%; max-height: 90%;" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" style="position: absolute; top: -40px; right: 0; font-size: 3rem; background: none; border: none; color: var(--text-primary); cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--anthropic-orange)'" onmouseout="this.style.color='var(--text-primary)'">&times;</button>
+            <img id="modalImage" src="" alt="Preview" style="max-width: 100%; max-height: 90vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        </div>
+    </div>
+</body>
+</html>
