@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.SideBar">
+    <StackPanel Width="50" HorizontalAlignment="Right" Height="200">
+        <ListBox Background="Transparent" SelectionMode="Single" Cursor="Hand">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </ListBox.Styles>
+            <ListBoxItem Name="SideBar_Dashboard">
+                <ToggleButton Classes="SideBarItem">
+                    <TextBlock Text="D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                </ToggleButton>
+            </ListBoxItem>
+            <ListBoxItem Name="SideBar_Mail">
+                <ToggleButton Classes="SideBarItem">
+                    <TextBlock Text="M" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                </ToggleButton>
+            </ListBoxItem>
+            <ListBoxItem Name="SideBar_Accounts">
+                <ToggleButton Classes="SideBarItem">
+                    <TextBlock Text="A" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                </ToggleButton>
+            </ListBoxItem>
+            <ListBoxItem Name="SideBar_Analytics">
+                <ToggleButton Classes="SideBarItem">
+                    <TextBlock Text="N" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                </ToggleButton>
+            </ListBoxItem>
+            <ListBoxItem Name="SideBar_Settings">
+                <ToggleButton Classes="SideBarItem">
+                    <TextBlock Text="S" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                </ToggleButton>
+            </ListBoxItem>
+        </ListBox>
+    </StackPanel>
+</UserControl>

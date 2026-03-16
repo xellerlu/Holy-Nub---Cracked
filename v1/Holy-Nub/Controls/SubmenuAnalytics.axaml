@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:HamburgerMenu.Controls"
+             x:Class="HamburgerMenu.Controls.SubmenuAnalytics"
+             x:DataType="controls:AnalyticsViewModel">
+    <Border Background="#FF2B2B2B" CornerRadius="10" Padding="10">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <TextBlock Grid.Row="0" Text="CHEAT SCANNER" FontSize="16"
+                       Foreground="White" FontWeight="Bold" Margin="10,5,0,5"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" Margin="10,5">
+                <Button Content="Full Scan" Command="{Binding FullScanCommand}"
+                        Background="#FFFF8C00" Foreground="White" Padding="12,5"/>
+                <Button Content="Quick Scan" Command="{Binding QuickScanCommand}"
+                        Background="#FF555555" Foreground="White" Padding="12,5"/>
+                <Button Content="Cancel" Command="{Binding CancelScanCommand}"
+                        Background="#FF882222" Foreground="White" Padding="12,5"
+                        IsVisible="{Binding IsScanning}"/>
+                <Button Content="Export" Command="{Binding ExportLogCommand}"
+                        Background="#FF336633" Foreground="White" Padding="12,5"
+                        IsVisible="{Binding CanExport}"/>
+            </StackPanel>
+            <ListBox Grid.Row="2" Background="Transparent"
+                     ItemsSource="{Binding Results}" Margin="5">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Margin" Value="1"/>
+                        <Setter Property="Background" Value="#FF363636"/>
+                    </Style>
+                </ListBox.Styles>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Grid.Column="0" Text="{Binding CheatName}"
+                                       FontSize="12" Foreground="#FFFF8C00"
+                                       VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Details}"
+                                       FontSize="11" Foreground="#CCCCCC"
+                                       VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Confidence, StringFormat={}{0}%}"
+                                       FontSize="11" Foreground="White"
+                                       VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Row="3" Margin="10,5">
+                <TextBlock Text="{Binding StatusText}" FontSize="11" Foreground="#AAAAAA"/>
+                <TextBlock FontSize="11" Foreground="White">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="Found: {0}">
+                            <Binding Path="ResultCount"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

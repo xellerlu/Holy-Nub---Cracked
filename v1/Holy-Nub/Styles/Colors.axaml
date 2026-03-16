@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="DarkBg">#FF243424</Color>
+    <Color x:Key="PanelBg">#FF363636</Color>
+    <Color x:Key="AccentOrange">#FFFF8C00</Color>
+    <Color x:Key="DarkPanel">#FF2B2B2B</Color>
+    <Color x:Key="MidGray">#FF5B5B5B</Color>
+
+    <SolidColorBrush x:Key="DarkBgBrush" Color="{StaticResource DarkBg}"/>
+    <SolidColorBrush x:Key="PanelBgBrush" Color="{StaticResource PanelBg}"/>
+    <SolidColorBrush x:Key="AccentOrangeBrush" Color="{StaticResource AccentOrange}"/>
+    <SolidColorBrush x:Key="DarkPanelBrush" Color="{StaticResource DarkPanel}"/>
+</ResourceDictionary>

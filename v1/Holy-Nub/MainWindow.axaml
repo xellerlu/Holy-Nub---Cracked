@@ -1,0 +1,130 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:HamburgerMenu.Controls"
+        x:Class="HamburgerMenu.MainWindow"
+        Title="Holy-Nub"
+        Width="980" Height="700"
+        MinWidth="800" MinHeight="600"
+        Background="#FF243424"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        CanResize="True">
+
+    <Window.Styles>
+        <Style Selector="Border.WindowEdge">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="52"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="95"/>
+        </Grid.RowDefinitions>
+
+        <!-- Background -->
+        <Border Grid.ColumnSpan="3" Grid.RowSpan="3" Background="#FF243424" ZIndex="0">
+            <Image Name="Logo" Width="150" Height="150"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Margin="0,0,10,20" Opacity="0">
+                <Image.Transitions>
+                    <Transitions>
+                        <DoubleTransition Property="Opacity" Duration="0:0:2" Easing="CircularEaseOut"/>
+                    </Transitions>
+                </Image.Transitions>
+            </Image>
+        </Border>
+
+        <!-- Channel -->
+        <controls:Channel Name="Channel_UC" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+                          HorizontalAlignment="Right" VerticalAlignment="Top" ZIndex="4"/>
+
+        <!-- MainMenu -->
+        <controls:MainMenu Name="MainMenu_UC" Grid.Column="0" Grid.RowSpan="3" ZIndex="3"/>
+
+        <!-- TrackOne -->
+        <controls:TrackOne Name="Track_One" Grid.Column="1" Grid.RowSpan="3" ZIndex="1"/>
+
+        <!-- Content Area -->
+        <Grid Name="ContentArea" Grid.Column="1" Grid.Row="1" ZIndex="2"
+              Margin="20,0,0,0" ClipToBounds="True">
+
+            <controls:SubmenuOne Name="SubmenuOne_UC" IsVisible="False"
+                                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                 Margin="0,0,80,0"
+                                 RenderTransform="translateY(800px)">
+                <controls:SubmenuOne.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.8" Easing="CircularEaseOut"/>
+                    </Transitions>
+                </controls:SubmenuOne.Transitions>
+            </controls:SubmenuOne>
+
+            <controls:SubmenuAccounts Name="SubmenuAccounts_UC" IsVisible="False"
+                                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                      Margin="0,0,80,0"
+                                      RenderTransform="translateY(800px)">
+                <controls:SubmenuAccounts.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.8" Easing="CircularEaseOut"/>
+                    </Transitions>
+                </controls:SubmenuAccounts.Transitions>
+            </controls:SubmenuAccounts>
+
+            <controls:SubmenuAnalytics Name="SubmenuAnalytics_UC" IsVisible="False"
+                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                       Margin="0,0,80,0"
+                                       RenderTransform="translateY(800px)">
+                <controls:SubmenuAnalytics.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.8" Easing="CircularEaseOut"/>
+                    </Transitions>
+                </controls:SubmenuAnalytics.Transitions>
+            </controls:SubmenuAnalytics>
+
+            <controls:SubmenuSettings Name="SubmenuSettings_UC" IsVisible="False"
+                                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                      Margin="0,0,80,0"
+                                      RenderTransform="translateY(800px)">
+                <controls:SubmenuSettings.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.8" Easing="CircularEaseOut"/>
+                    </Transitions>
+                </controls:SubmenuSettings.Transitions>
+            </controls:SubmenuSettings>
+
+            <controls:SubmenuTwo Name="SubmenuTwo_UC" IsVisible="False"
+                                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                                 Margin="0,0,20,0"
+                                 RenderTransform="translateX(300px)">
+                <controls:SubmenuTwo.Transitions>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.8" Easing="CircularEaseOut"/>
+                        <DoubleTransition Property="Opacity" Duration="0:0:0.8"/>
+                    </Transitions>
+                </controls:SubmenuTwo.Transitions>
+            </controls:SubmenuTwo>
+        </Grid>
+
+        <!-- TrackTwo -->
+        <controls:TrackTwo Name="Track_Two" Grid.Column="2" Grid.RowSpan="3" ZIndex="2"/>
+
+        <!-- Window Edge -->
+        <Border Name="Window_Edge" Grid.ColumnSpan="3" Grid.RowSpan="3" Classes="WindowEdge" ZIndex="1"/>
+
+        <!-- App Control -->
+        <controls:AppControl Grid.ColumnSpan="3" Grid.RowSpan="3" ZIndex="5"/>
+    </Grid>
+</Window>

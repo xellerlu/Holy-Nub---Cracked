@@ -1,0 +1,9 @@
+using System.Reflection;
+
+[assembly: AssemblyCompany("Holy-Nub")]
+[assembly: AssemblyConfiguration("Debug")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyProduct("Holy-Nub")]
+[assembly: AssemblyTitle("Holy-Nub")]
+[assembly: AssemblyVersion("1.0.0.0")]

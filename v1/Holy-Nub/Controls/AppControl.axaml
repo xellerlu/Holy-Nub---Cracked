@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.AppControl">
+    <Panel>
+        <Border Name="Control_Header" Height="123" Width="36"
+                Background="#FFFF8C00" Margin="0,24,17,0"
+                VerticalAlignment="Top" HorizontalAlignment="Right"
+                RenderTransform="translateY(-160px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Delay="0:0:3.2" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+            <Border Margin="0,12,0,12" CornerRadius="5" Background="#FF363636">
+                <StackPanel VerticalAlignment="Center" Spacing="5">
+                    <Button Name="App_ShutDown" Classes="ControlBtn" Height="25" Margin="4,0" Click="App_ShutDown_Click">
+                        <TextBlock Text="X" Foreground="White" HorizontalAlignment="Center" FontSize="12"/>
+                    </Button>
+                    <Button Name="App_Maximize" Classes="ControlBtn" Height="25" Margin="4,0" Click="App_Maximize_Click">
+                        <TextBlock Text="&#x25A2;" Foreground="White" HorizontalAlignment="Center" FontSize="12"/>
+                    </Button>
+                    <Button Name="App_Minimize" Classes="ControlBtn" Height="25" Margin="4,0" Click="App_Minimize_Click">
+                        <TextBlock Text="&#x2014;" Foreground="White" HorizontalAlignment="Center" FontSize="12"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Border>
+
+        <Border Name="Control_Footer" Height="123" Width="36"
+                Background="#FFFF8C00" Margin="0,0,17,24"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                RenderTransform="translateY(160px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Delay="0:0:3.2" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+        </Border>
+    </Panel>
+</UserControl>

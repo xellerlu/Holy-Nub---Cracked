@@ -1,0 +1,136 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:HamburgerMenu.Controls"
+             x:Class="HamburgerMenu.Controls.MainMenu">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu Status -->
+        <Border Name="Menu_Status" Grid.Row="0" Width="210" Height="60"
+                Background="#FF3E5C44" CornerRadius="10"
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                Margin="20,20,0,0" RenderTransform="translateY(-200px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.6" Delay="0:0:0.4"/>
+                </Transitions>
+            </Border.Transitions>
+            <Panel>
+                <Border Height="20" Width="100" Background="#FF3E5C44"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        CornerRadius="5,5,0,0" Margin="0,2,0,0">
+                    <TextBlock Text="MENU STATUS" FontSize="12" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center" Margin="0,0,0,5" Spacing="6">
+                    <Border Height="30" Width="95" Background="#FF283A27" CornerRadius="3,10,10,10">
+                        <Panel>
+                            <Rectangle Name="SideBar_Active" Height="4" Width="20"
+                                       Margin="0,0,0,5" HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom" Fill="#FFFF8C00"
+                                       RadiusX="2" RadiusY="2"/>
+                            <TextBlock Text="SIDE BAR" Foreground="White" FontSize="12"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Margin="0,0,0,8"/>
+                        </Panel>
+                    </Border>
+                    <Border Height="30" Width="95" Background="#FF283A27" CornerRadius="10,3,10,10">
+                        <Panel>
+                            <Rectangle Name="SidePanel_Active" Height="4" Width="20"
+                                       Margin="0,0,0,5" HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom" Fill="#FF5B5B5B"
+                                       RadiusX="2" RadiusY="2"/>
+                            <TextBlock Text="SIDE PANEL" Foreground="White" FontSize="12"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Margin="0,0,0,8"/>
+                        </Panel>
+                    </Border>
+                </StackPanel>
+            </Panel>
+        </Border>
+
+        <!-- Menu Container -->
+        <Border Name="Menu_Container" Grid.Row="1" Width="50"
+                HorizontalAlignment="Left" Background="Transparent"
+                Margin="20,15,0,15" RenderTransform="translateX(-80px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Delay="0:0:1.2"/>
+                    <DoubleTransition Property="Width" Duration="0:0:1" Easing="QuadraticEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+            <Panel>
+                <Border Background="#FF363636" BorderBrush="#FFFF8C00"
+                        BorderThickness="0,0,0,5" CornerRadius="8"/>
+                <Panel>
+                    <ToggleButton Name="Menu_ToggleButton" Classes="HamburgerToggle"
+                                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                                  Checked="Menu_ToggleButton_Checked"
+                                  Unchecked="Menu_ToggleButton_Unchecked">
+                        <TextBlock Text="&#9776;" Foreground="White" FontSize="20"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ToggleButton>
+                    <Border Height="32" Width="150" Background="#FFFF8C00"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,9,52,0" CornerRadius="5">
+                        <Border Width="65" Background="#FF555555"
+                                HorizontalAlignment="Left" Margin="10,0,0,0"
+                                CornerRadius="5" BorderBrush="#FF363636"
+                                BorderThickness="0,3,0,3">
+                            <TextBlock Text="Menu" FontSize="16" Foreground="White"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Border>
+                    <StackPanel Name="SideBar_Container" Margin="0,50,0,0" ZIndex="1">
+                        <controls:SideBar/>
+                    </StackPanel>
+                    <StackPanel Name="SidePanel_Container" Margin="0,50,0,0"
+                                IsVisible="False" ClipToBounds="True">
+                        <controls:SidePanel Name="SidePanel_UC"/>
+                    </StackPanel>
+                </Panel>
+            </Panel>
+        </Border>
+
+        <!-- Menu Base (servers) -->
+        <Border Name="Menu_Base" Grid.Row="2" Width="210" Height="90"
+                Background="#FFFF8C00" CornerRadius="10"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                Margin="20,0,0,20" RenderTransform="translateY(110px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.6" Delay="0:0:0.4" Easing="CubicEaseIn"/>
+                </Transitions>
+            </Border.Transitions>
+            <StackPanel Margin="8,3,8,3" VerticalAlignment="Top">
+                <TextBlock Text="CSGO SERVERS" FontSize="11" Foreground="White"
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+                <Button Name="BtnMirage" Classes="ServerBtn" Click="CopyServer_Click"
+                        Tag="connect 37.48.252.7:27115">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="Mirage:" FontSize="9" Foreground="#FFFF8C00"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="connect 37.48.252.7:27115" FontSize="8"
+                                   Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="BtnMirageFps" Classes="ServerBtn" Click="CopyServer_Click"
+                        Tag="connect 95.213.255.151:27315">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="mirage fps:" FontSize="9" Foreground="#FFFF8C00"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="connect 95.213.255.151:27315" FontSize="8"
+                                   Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <TextBlock Name="CopyStatus" FontSize="8" Foreground="White"
+                           HorizontalAlignment="Center" Margin="0,2,0,0" Opacity="0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.TrackOne">
+    <Panel>
+        <Border Name="Submenu_Out" Width="8" Background="#FFFF8C00"
+                HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                Margin="0,95,0,95" CornerRadius="0,4,4,0"
+                RenderTransform="translateX(-20px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Delay="0:0:4" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+            <Image Name="T1_Close" Width="6" Height="6" Opacity="0"/>
+        </Border>
+        <Border Name="Submenu_In" Width="8" Background="#FF363636"
+                HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                Margin="0,95,0,95" CornerRadius="0,4,4,0"
+                IsVisible="False" RenderTransform="translateX(-20px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+            <Image Name="T1_Open" Width="6" Height="6" Opacity="0"/>
+        </Border>
+    </Panel>
+</UserControl>

@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.Channel">
+    <Panel>
+        <Panel Name="Level0" RenderTransform="translateX(450px)">
+            <Panel.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Delay="0:0:2.15" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Panel.Transitions>
+            <Border Background="#FF363636" Height="32" Width="180"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="0,30,50,0" CornerRadius="10,0,0,10"
+                    BorderBrush="#FFFF8C00" BorderThickness="5,0,0,0">
+                <Border.RenderTransform>
+                    <SkewTransform AngleX="-20"/>
+                </Border.RenderTransform>
+                <TextBlock FontSize="16" Foreground="White" Text="Discord : fayin4"
+                           VerticalAlignment="Center" Margin="15,0,0,0"/>
+            </Border>
+        </Panel>
+    </Panel>
+</UserControl>

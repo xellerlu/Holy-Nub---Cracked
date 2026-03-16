@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:HamburgerMenu.Controls"
+             x:Class="HamburgerMenu.Controls.SubmenuAccounts"
+             x:DataType="controls:AccountsViewModel">
+    <Border Background="#FF2B2B2B" CornerRadius="10" Padding="10">
+        <Grid RowDefinitions="Auto,*,Auto">
+            <TextBlock Grid.Row="0" Text="STEAM ACCOUNTS" FontSize="16"
+                       Foreground="White" FontWeight="Bold" Margin="10,5,0,10"/>
+
+            <ListBox Grid.Row="1" Name="AccountsList" Background="Transparent"
+                     ItemsSource="{Binding Accounts}"
+                     SelectedItem="{Binding SelectedAccount}"
+                     SelectionMode="Single" Cursor="Hand">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Background" Value="#FF363636"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#FFFF8C00"/>
+                    </Style>
+                </ListBox.Styles>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="{Binding PersonaName}" FontSize="13"
+                                       Foreground="White" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding VacStatus}" FontSize="10"
+                                       Foreground="#AAAAAA" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Row="2" Margin="10,10,10,5" Spacing="5"
+                        IsVisible="{Binding HasSelectedAccount}">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Image Source="{Binding AvatarBitmap}" Width="48" Height="48"
+                           Stretch="UniformToFill"/>
+                    <StackPanel Spacing="2" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Nickname}" FontSize="14"
+                                   Foreground="White" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SteamId2}" FontSize="11" Foreground="#AAAAAA"/>
+                        <TextBlock Text="{Binding UniqueId}" FontSize="10" Foreground="#888888"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="Open Profile" HorizontalAlignment="Left"
+                        Command="{Binding OpenProfileCommand}"
+                        Background="#FFFF8C00" Foreground="White" Padding="10,3"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

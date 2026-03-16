@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:HamburgerMenu.Controls"
+             x:Class="HamburgerMenu.Controls.SubmenuSettings"
+             x:DataType="controls:SettingsViewModel">
+    <Border Background="#FF2B2B2B" CornerRadius="10" Padding="15">
+        <StackPanel Spacing="12">
+            <TextBlock Text="SETTINGS" FontSize="16" Foreground="White" FontWeight="Bold"/>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Windows Version" FontSize="11" Foreground="#AAAAAA"/>
+                <TextBlock Text="{Binding WindowsVersion}" FontSize="13" Foreground="White"/>
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="Install Date" FontSize="11" Foreground="#AAAAAA"/>
+                <TextBlock Text="{Binding WindowsInstallDate}" FontSize="13" Foreground="White"/>
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="VM Status" FontSize="11" Foreground="#AAAAAA"/>
+                <TextBlock Text="{Binding VmStatus}" FontSize="13"
+                           Foreground="{Binding VmStatusColor}"/>
+            </StackPanel>
+
+            <StackPanel Spacing="4">
+                <TextBlock Text="GPU" FontSize="11" Foreground="#AAAAAA"/>
+                <TextBlock Text="{Binding GpuName}" FontSize="13" Foreground="White"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,10,0,0">
+                <Button Content="Data Usage" Command="{Binding OpenDataUsageCommand}"
+                        Background="#FF555555" Foreground="White" Padding="10,5"/>
+                <Button Content="NVIDIA Panel" Command="{Binding OpenNvidiaControlPanelCommand}"
+                        Background="#FF76B900" Foreground="White" Padding="10,5"
+                        IsVisible="{Binding IsNvidiaGpu}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

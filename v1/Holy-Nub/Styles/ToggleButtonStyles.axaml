@@ -1,0 +1,52 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="ToggleButton.HamburgerToggle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="ToggleButton.HamburgerToggle /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ToggleButton.HamburgerToggle:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#22FFFFFF"/>
+    </Style>
+    <Style Selector="ToggleButton.HamburgerToggle:checked /template/ ContentPresenter">
+        <Setter Property="Background" Value="#33FF8C00"/>
+    </Style>
+
+    <Style Selector="ToggleButton.SideBarItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="ToggleButton.SideBarItem /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ToggleButton.SideBarItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#22FFFFFF"/>
+    </Style>
+
+    <Style Selector="ToggleButton.SidePanelItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="ToggleButton.SidePanelItem /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ToggleButton.SidePanelItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#22FFFFFF"/>
+    </Style>
+    <Style Selector="ToggleButton.SidePanelItem:checked /template/ ContentPresenter">
+        <Setter Property="Background" Value="#33FF8C00"/>
+    </Style>
+</Styles>

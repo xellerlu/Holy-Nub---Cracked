@@ -1,0 +1,97 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.SidePanel">
+    <ListBox Name="SidePanel_ListBox" Background="Transparent" SelectionMode="Single"
+             Cursor="Hand" Width="210" SelectionChanged="SidePanel_SelectionChanged">
+        <ListBox.Styles>
+            <Style Selector="ListBoxItem">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+            <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+            <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+        </ListBox.Styles>
+
+        <ListBoxItem Name="Dashboard_ListBoxItem" Tag="Dashboard">
+            <ToggleButton Classes="SidePanelItem" IsChecked="{Binding $parent[ListBoxItem].IsSelected, Mode=TwoWay}">
+                <Grid Height="40" Width="210">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Dashboard" FontSize="17" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="D" FontSize="14" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </ToggleButton>
+        </ListBoxItem>
+
+        <ListBoxItem Name="Apps_ListBoxItem" Tag="Apps">
+            <ToggleButton Classes="SidePanelItem" IsChecked="{Binding $parent[ListBoxItem].IsSelected, Mode=TwoWay}">
+                <Grid Height="40" Width="210">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Apps" FontSize="17" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="M" FontSize="14" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </ToggleButton>
+        </ListBoxItem>
+
+        <ListBoxItem Name="Accounts_ListBoxItem" Tag="Accounts">
+            <ToggleButton Classes="SidePanelItem" IsChecked="{Binding $parent[ListBoxItem].IsSelected, Mode=TwoWay}">
+                <Grid Height="40" Width="210">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Accounts" FontSize="17" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="A" FontSize="14" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </ToggleButton>
+        </ListBoxItem>
+
+        <ListBoxItem Name="Analytics_ListBoxItem" Tag="Analytics">
+            <ToggleButton Classes="SidePanelItem" IsChecked="{Binding $parent[ListBoxItem].IsSelected, Mode=TwoWay}">
+                <Grid Height="40" Width="210">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Analytics" FontSize="17" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="N" FontSize="14" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </ToggleButton>
+        </ListBoxItem>
+
+        <ListBoxItem Name="Settings_ListBoxItem" Tag="Settings">
+            <ToggleButton Classes="SidePanelItem" IsChecked="{Binding $parent[ListBoxItem].IsSelected, Mode=TwoWay}">
+                <Grid Height="40" Width="210">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Settings" FontSize="17" Foreground="White"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="S" FontSize="14" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </ToggleButton>
+        </ListBoxItem>
+    </ListBox>
+</UserControl>

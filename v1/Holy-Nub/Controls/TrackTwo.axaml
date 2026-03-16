@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.TrackTwo">
+    <Panel>
+        <Border Name="TrackTwo_Border" Width="8" Background="#FFFF8C00"
+                HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                Margin="0,95,0,95" CornerRadius="4,0,0,4"
+                RenderTransform="translateX(20px)">
+            <Border.Transitions>
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Delay="0:0:4" Easing="CircularEaseOut"/>
+                </Transitions>
+            </Border.Transitions>
+        </Border>
+    </Panel>
+</UserControl>

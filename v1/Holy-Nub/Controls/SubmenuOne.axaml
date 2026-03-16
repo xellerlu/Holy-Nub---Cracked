@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.SubmenuOne">
+    <Border Name="AppsPanel" Background="#FF2B2B2B" CornerRadius="10" Padding="10">
+        <Grid RowDefinitions="Auto,*">
+            <TextBlock Grid.Row="0" Text="APPS" FontSize="16" Foreground="White"
+                       FontWeight="Bold" Margin="10,5,0,10"/>
+            <ListBox Name="SubmenuOne_ListBox" Grid.Row="1" Background="Transparent"
+                     SelectionMode="Single" Cursor="Hand"
+                     SelectionChanged="SubmenuOne_SelectionChanged">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Background" Value="#FF363636"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#FF555555"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#FFFF8C00"/>
+                    </Style>
+                </ListBox.Styles>
+
+                <ListBoxItem Name="ActivityViewer_ListBoxItem" Tag="ActivityViewer">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="A" FontSize="16" Foreground="#FFFF8C00" VerticalAlignment="Center" Width="20"/>
+                        <TextBlock Text="Activity Viewer" FontSize="14" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem Name="JournalWindows_ListBoxItem" Tag="JournalWindows">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="J" FontSize="16" Foreground="#FFFF8C00" VerticalAlignment="Center" Width="20"/>
+                        <TextBlock Text="Journal Windows" FontSize="14" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem Name="SystemInformer_ListBoxItem" Tag="SystemInformer">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="S" FontSize="16" Foreground="#FFFF8C00" VerticalAlignment="Center" Width="20"/>
+                        <TextBlock Text="System Informer" FontSize="14" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem Name="RegistryAnalyzer_ListBoxItem" Tag="RegistryAnalyzer">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="R" FontSize="16" Foreground="#FFFF8C00" VerticalAlignment="Center" Width="20"/>
+                        <TextBlock Text="Registry Analyzer" FontSize="14" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem Name="Everything_ListBoxItem" Tag="Everything">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="E" FontSize="16" Foreground="#FFFF8C00" VerticalAlignment="Center" Width="20"/>
+                        <TextBlock Text="Everything" FontSize="14" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+        </Grid>
+    </Border>
+</UserControl>

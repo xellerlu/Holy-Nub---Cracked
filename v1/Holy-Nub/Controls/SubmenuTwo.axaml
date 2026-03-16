@@ -1,0 +1,11 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HamburgerMenu.Controls.SubmenuTwo">
+    <Border Background="#FF2B2B2B" CornerRadius="10" Padding="15" Width="250">
+        <StackPanel Spacing="10">
+            <TextBlock Text="DETAILS" FontSize="14" Foreground="White" FontWeight="Bold"/>
+            <TextBlock Name="DetailText" Text="Select an app to view details"
+                       FontSize="12" Foreground="#CCCCCC" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Border>
+</UserControl>
