@@ -1,0 +1,25 @@
+name: Build HolyNub
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x  # Попробуйте 8.0, если не сработает - замените на 7.0 или 6.0
+
+    - name: Restore dependencies
+      run: dotnet restore v2/HolyNub.sln
+
+    - name: Build
+      run: dotnet build v2/HolyNub.sln --configuration Release --no-restore
