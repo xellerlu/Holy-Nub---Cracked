@@ -1,10 +1,11 @@
-name: Build HolyNub
+name: Build and Publish HolyNub
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:  # Позволяет запускать сборку вручную с кнопки
 
 jobs:
   build:
@@ -16,10 +17,19 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x  # Попробуйте 8.0, если не сработает - замените на 7.0 или 6.0
+        dotnet-version: 8.0.x
 
     - name: Restore dependencies
       run: dotnet restore v2/HolyNub.sln
 
     - name: Build
       run: dotnet build v2/HolyNub.sln --configuration Release --no-restore
+
+    - name: Publish
+      run: dotnet publish v2/HamburgerMenu.Avalonia/HamburgerMenu.Avalonia.csproj -c Release -o publish_output
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: HolyNub-App
+        path: publish_output/
