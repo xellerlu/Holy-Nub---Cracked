@@ -1,15 +1,15 @@
-name: Build and Publish HolyNub
+name: Build and Publish HolyNub (Windows)
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:  # Позволяет запускать сборку вручную с кнопки
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # <--- ВАЖНО: меняем на Windows
 
     steps:
     - uses: actions/checkout@v4
@@ -25,11 +25,11 @@ jobs:
     - name: Build
       run: dotnet build v2/HolyNub.sln --configuration Release --no-restore
 
-    - name: Publish
-      run: dotnet publish v2/HamburgerMenu.Avalonia/HamburgerMenu.Avalonia.csproj -c Release -o publish_output
+    - name: Publish for Windows
+      run: dotnet publish v2/HamburgerMenu.Avalonia/HamburgerMenu.Avalonia.csproj -c Release -o publish_output -r win-x64 --self-contained true -p:PublishSingleFile=true
 
-    - name: Upload build artifacts
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: HolyNub-App
+        name: HolyNub-Windows
         path: publish_output/
